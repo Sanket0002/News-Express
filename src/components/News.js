@@ -47,18 +47,19 @@ const News =(props)=> {
 
      return (
       <>
-        <h2 className="text-center" style={{ margin: '35px 0px', marginTop: '90px' }}>NewsExpress-Top {capitalizeFirstLetter(props.category)} Headlines</h2>
+        <h2 className="text-center" style={{margin: '35px 0px', marginTop: '90px',color: props.mode==='dark'?'white':'black'}}> NewsExpress-Top {capitalizeFirstLetter(props.category)} Headlines </h2>
         {loading && <Spinner/>}
+
         <InfiniteScroll
           dataLength={articles.length}
           next={fetchMoreData}
           hasMore={articles.length !== totalResults}
           loader={<Spinner/>}>
 
-        <div className="container">
+        <div className="container" >
         <div className="row">
             {articles.map((element)=>{
-                return <div className="col-md-4" key={element.url}>
+                return <div className="col-md-4" key={element.url}  >
                 <NewsItems
                   title={element.title?element.title:""}
                   description={element.description?element.description:""}
@@ -73,7 +74,6 @@ const News =(props)=> {
       </>
     );
   }
-
 
   News.defaultProps ={
     country:'in',
